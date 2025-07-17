@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Liste</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+    <script>
+        var sortingvalue = "";
+        var sortingorder = 1;
+        var globaldata = "";
+        function changesort(sortby,data=globaldata){
+
+            if (sortingvalue == sortby){
+                sortingorder *= -1;
+            }else{
+                sortingvalue = sortby;
+                sortingorder = -1;
+            }
+            globaldata = data;
+            compileData(globaldata);
+        }
+        
+        
+
+        function openLink(link) {        
+        window.location.href = link;
+        }
+
+        function compileData(data, sortby = sortingvalue, order = sortingorder){
+
+
+            const container = document.querySelector(".grid-container")
+            
+            sortSymbols = ["▼","⇅","▲"]//  
+            buttonStrings = {"AOTY":"AOTY Rating","NieschenIndex":"Nieschen Index","Length":"Length"}
+
+            data = data.sort(function(a,b){
+                
+                
+                return (a[sortby] - b[sortby])*order;
+              })
+
+              
+
+            var nidxmax = 1
+            const nidxvalues = Object.values(data);
+            nidxvalues.map((el) => {
+                const valueFromObject = el["NieschenIndex"];
+                nidxmax = Math.max(nidxmax, valueFromObject);
+              });
+
+
+            container.innerHTML = `
+                <h1>✨ Album Liste Yayy 🎉</h1>
+                <div class="buttondiv">Sort by: 
+                <button id="AOTY" onclick="changesort('AOTY')">AOTY Rating ${sortSymbols[1]}</button> 
+                <button id="NieschenIndex" onclick="changesort('NieschenIndex')">Nieschen Index ${sortSymbols[1]}</button> 
+                <button  id="Length" onclick="changesort('Length')">Length ${sortSymbols[1]}</button> </div>
+            
+            `
+            document.querySelector(`button#${sortby}`).innerHTML = `${buttonStrings[sortby]} ${sortSymbols[order+1]}`
+
+
+            for (i in data){
+                if (data[i]["AOTY"]>=70){aotycolor = "#85ce73"}
+                else if (data[i]["AOTY"]>=50){aotycolor = "khaki"}
+                else {aotycolor = "#d76666"}
+                console.log(data[i]["NieschenIndex"])
+                console.log(`NM: ${nidxmax}`)
+                container.innerHTML += `
+                      <div class="albumcarddiv">    
+                        <div class="bgdiv">   
+                            <div class="albumcard" onclick="openLink('${data[i]["SpotifyLink"]}')">
+                                <img src="${data[i]["CoverLink"]}">
+                                <div class="scores">
+                                    <div id="nidx" style="background-color: hsl(${ ((nidxmax - data[i]["NieschenIndex"])/ nidxmax) * 90 + 10},100%,50%);"><div><span>${data[i]["NieschenIndex"]}</span></div></div>
+                                    <a title="AOTY" href="${data[i]["AotyLink"]}">
+                                    <div class="ratingBlock">
+                                        <div class="rating">${data[i]["AOTY"]}</div>
+                                        <span>AOTY</span>
+                                        <div class="ratingBar">
+                                            <div style="width:${data[i]["AOTY"]}%; background-color: ${aotycolor};"></div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                                </div>
+                                <div class="recordInfos">
+                                    <span id="artist">${data[i]["Artist"]}</span><br>
+                                    <span id="title">${data[i]["Album"]}</span><br>
+                                    <span id="stats">${data[i]["Genres"]}</span><br>
+                                    <span id="stats">${data[i]["LengthStr"]}</span>
+                                </div>
+                                <div class="links">
+                                    <a title="Spotify" href="${data[i]["SpotifyLink"]}">
+                                        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"></a>
+                                    <a title="AOTY" href="${data[i]["AotyLink"]}">
+                                        <img src="aoty.png"></a>    
+                                </div>
+                            </div>
+
+                            <div class="albuminfo">
+                                <h1>Boing</h1>
+
+                            </div>
+                            </div>
+                            
+                        </div>
+                    
+                    `
+
+
+                }//⮁ ⭣ ⭡
+                container.innerHTML += `
+                        <div class="albumcarddiv">       
+                            <div class="albumcard" onclick="openLink('${data[i]["SpotifyLink"]}')">
+                                <img src="emilsign.png">
+                                
+                                <div class="recordInfos">
+                                    
+                                    <span id="title">Le Site by Emli</span><br>
+                                    <span id="stats">Oct 2024</span><br>
+                                    <span id="stats">:3 </span><br>
+                                    <span id="stats">special thanks to Nodex</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                `
+        }
+        
+
+        fetch(
+        "https://opensheet.elk.sh/1_1T7O-h7sUJCAX1XbE3EMWCMfKY4wjIk5ZbBmExrUJk/main"
+        ).then(response=>response.json())
+        .then(data=>{ changesort("AOTY",data) })
+    </script>
+    <style>
+        body{
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+        .grid-container{
+            margin-left: auto;
+            margin-right: auto;
+            width: 98vw;
+            text-align: center;
+        }
+        .bgdiv {
+            max-width: 800px;
+            width: calc(96.2vw - 100% * 2 * ( 26 / 850 ) + 2 * 100% * ( 25 / 850 ));
+            background-color: rgb(24, 24, 24);
+            
+            border-radius: calc(100% * ( 25 / 850 )) / calc(100% * ( 25 / 230 ));
+          }
+        .albuminfo{
+            padding: 20px calc(98vw * ( 112/ 800 )) 10px calc(98vw * ( 212/ 800 ));
+        }
+        div.albumcard{
+            
+            max-height: 180px;
+            height: 21vw;
+
+            background-color: rgb(24, 24, 24);
+            border-radius: calc(100% * ( 25 / 850 )) / calc(100% * ( 25 / 230 ));
+            
+            display: flex
+        }
+        .recordInfos {
+            width: 51%;
+        }          
+
+        div.albumcard > div{
+            padding-left: 2.9%
+            
+        }
+        .scores{
+            font-size: 158%;
+            height: 100%;
+        }
+        .scores > #nidx{
+            border-radius: 50%;
+            max-width: 60px;
+            width: 100%;
+            max-height: 60px;
+            height: calc(100% * ( 60 / 180 ));
+            margin: 31% 0;
+        }
+        .scores > #nidx > div{
+            transform: translate(-50%, -50%);
+            position: relative;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background-color: rgb(24, 24, 24);
+            width: 75%;
+            height: 75%;
+            text-align: center;
+            line-height: 158%;
+            
+        }
+        .ratingBlock{
+            max-width: 60px;
+            width: 100%;
+            max-height: 42px;
+            height: calc(100% * ( 42 / 180 ));
+            text-align: center;
+            color: white;
+        }
+
+        .ratingBlock > span{
+            font-size: 35%;
+        }
+        .ratingBlock .ratingBar{
+            width: 100%;
+            height: 12%;
+            background-color: #72767d;
+        }
+        .ratingBlock .ratingBar > div{
+
+            height: 100%;
+        }
+
+        span#title{
+            font-size: 260%;
+            color: white;
+            white-space: pre;
+            overflow: clip;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: inline-block;
+        }
+        span#artist{
+            font-size: 169%;
+            color: rgba(255, 255, 255, 0.562);
+            white-space: pre;
+            overflow: clip;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: inline-block;
+        }
+        span#stats{
+            font-size: 129%;
+            color: rgba(255, 255, 255, 0.733);
+            
+        }
+
+        .links{
+            width: 9%;
+        }
+
+        
+
+        .links > a{
+            height: 40%;
+            margin: 12.5% 0;
+            display: block;
+            width: 100%;
+        }
+        .links > a > img, .links > a > svg{
+            height: 100%;
+        }
+        .rating{
+            height: 33%;
+        }
+        .albumcarddiv{
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (min-width: 851px) {
+            div.albumcard {
+                font-size: 115%;
+                margin: 0 auto;
+                padding: 25px;
+            }
+          
+          .scores {
+            
+        
+            width: calc(100% * ( 60 / 800 ));
+          }
+        }
+          
+          @media screen and (max-width: 850px) {
+            div.albumcard {
+                	font-size: 2.1vw;
+                    padding: calc(100% * ( 25 / 850 ));
+            }
+          
+          .scores {
+            
+        
+            width: calc(98vw * ( 60 / 800 ));
+          }
+        }
+        .albumcard > img{
+            margin: .5%;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+        .albumcard a{
+            text-decoration: none;
+        }
+        .buttondiv{
+            margin-bottom: 30px;
+        }
+    </style>
+
+
+<div class="grid-container">
+    
+
+
+</div>
+
+            </body>
+            </html>

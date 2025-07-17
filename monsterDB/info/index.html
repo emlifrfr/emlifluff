@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://00gdps.ovh/monsterDB/globalstyles.css">
+
+    <script>
+        // Inhalt wird verdunkelt wenn man das Dropdownmenü öffnet
+
+        function navHoverEnter(){
+            document.querySelector(".content").style.opacity = "0.5";
+        }
+        function navHoverExit(){
+            document.querySelector(".content").style.opacity = "1";
+        }
+        
+        // Masken für den Farbverlauf am Seitenende
+        var masks = ['url("masks/heartmask.png")','url("masks/rylanmask.png")','url("masks/ovpnlymask.png")','url("masks/borussiaMask.png")','url("masks/monstermask.png")','url("masks/emilmask.png")','url("masks/heartmask.png")']
+
+        // Erste Maske auswählen
+        window.onload = (event) => {document.querySelector(".heart").style.maskImage = masks[0];};
+
+        function maskHoverEnter(){
+            
+            //Nächste Maske auswählen
+            const heart = document.querySelector(".heart");
+
+            /*Da indexOf() immer den ersten index auswählt, beginnt die auswahl wieder am ersten Element aus der Maskenliste, 
+            da das Erste und das Letzte gleich sind.*/
+            maskIdx = masks.indexOf(heart.style.maskImage); 
+            newMask = masks[maskIdx + 1]; //ein Element weiter
+
+            heart.style.maskImage = newMask; //Neue Makse anwenden
+        }
+        
+
+        // das wars :3
+    </script>
+    
+</head>
+<body>
+    <!-- Überschrift und bisschen Navigation, was man halt so braucht -->
+    <div class="headerDiv">
+        <a href="../" title="Home">
+            <svg id="homeicon" id="Layer_1" version="1.1" viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z"/></svg>
+        </a>
+        <div class="nav" onmouseover="navHoverEnter()" onmouseout="navHoverExit()">
+            <h1 id="arrow">›</h1>
+            <h1>Informationen!</h1>
+            <div class="navDropdown">
+                <a href="../collection"><h1 id="arrow">›</h1><h1>Sammlung</h1></a>
+                <a href="../tierlist"><h1 id="arrow">›</h1><h1>Tierlist</h1></a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <h2>Bildquellen</h2>
+        <ul>
+            <li><a href="https://www.monsterenergy.com">Monster Energy</a></li>
+            <li>Reddit</li>
+            <li>Eigene</li>
+        </ul>
+        <h2>Informationsquellen</h2>
+        <ul>
+            <li><a href="https://www.monsterenergy.com/">Monster Energy</a></li>
+            <li><a href="https://de.wikipedia.org/wiki/Monster_Energy">Wikipedia</a></li>
+        </ul>
+        <h2>Danksagung</h2>
+        <p>Rylan für die Idee der Website.</p>
+        <p>Ovpnly dafür, dass er meinen shit für $12 im Jahr hostet.</p>
+        <p>Paul und Jasper für Emotionalen beistand.</p>
+        <p>Und Natürlich <a href="https://www.borussia.de/de/">Borussia Mönchengladbach</a>.</p>
+
+        <!--Kleines interaktives thingy :3-->
+        <div class="heart" onmouseover="maskHoverEnter()"></div>
+
+    </div>
+</body>
+</html>

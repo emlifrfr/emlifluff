@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catbirb Random</title>
+
+
+    <style>
+        body{
+            background-color: rgb(12, 12, 12);
+            color: white;
+        }
+        .inputDiv {
+            display: inline-flex;
+            height: fit-content;
+            position: absolute;
+            
+
+            bottom: 0;
+            left:0;
+            right: 0;
+            margin-bottom: 2em;
+          }
+        .subInputDiv button {
+        width: 100%;
+        height: 2em;
+        }
+        .subInputDiv{
+            width: 50%;
+            padding: 0 10px;
+        }
+        input{
+            width: 50%;
+        }
+        button#toh{
+            height: 100%;
+        }
+
+        img#birbpng{
+            height: 47vw;
+            transform: translate(-50%, -100%);
+            position: absolute;
+            left: 50%;
+            top: 55%;
+  transform-origin: 50% 90%;
+            transition: transform 2s;
+        }
+        .animationDiv{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 45%;
+            width: 94vw;
+            height: 94vw;
+            background: #51d645;
+            border-radius: 50%;
+        }
+        .result{
+            position: absolute;
+            display: none;
+            left: 50%;
+            bottom: 6rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3em;
+            transform: translate(-50%, -50%);
+            color: white;
+
+        }
+        #birbpng{
+            display: none;
+        }
+
+        #brick, #birbcoin{
+            display: none;
+            width: 100%;
+            height: 100%;
+            scale: 0.7;
+        }
+        #birbcoin {
+            transform: rotateX(180deg);
+          }
+    </style>
+    <script>
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        var rngType = ""
+        var fullRotations = 1
+        async function spin() {
+            rngType = "wheel"
+
+            let coin = document.querySelector(".animationDiv");
+
+            coin.style.transition = "0s";
+            coin.style.transform = "translate(-50%, -50%)";
+
+            document.getElementById("birbcoin").style.display = "none";
+            document.getElementById("brick").style.display = "none";
+            
+            let wheel = document.getElementById("birbpng");
+            let minInput = document.getElementById("min");
+            let maxInput = document.getElementById("max");
+            let minVal = parseInt(minInput.value);
+            let maxVal = parseInt(maxInput.value);
+            
+            if (!(Number.isInteger(minVal) && Number.isInteger(minVal))){
+                return
+            }
+            wheel.style.display = "block";
+            await sleep(50);
+            let rngRange = Math.abs(minVal - maxVal) + 1;
+            let gradientStr = "conic-gradient(";
+            let degStep = 360/rngRange;
+
+            for (let i = 0; i<rngRange; i++){
+                color = `hsl(${(110*i)%360}deg 100 70)`;
+                gradientStr += `${color} ${degStep*i}deg ${degStep*(i+1)}deg, `;
+            }
+            gradientStr = gradientStr.slice(0, -2);
+            gradientStr += ")";
+
+            
+
+            document.querySelector(".animationDiv").style.background = gradientStr;
+            
+
+            let angle = Math.floor(Math.random() * 360) + (fullRotations*2*720);
+
+            randomResult = minVal + Math.floor(angle%360 / (360/rngRange));
+
+            console.log(randomResult);
+
+            fullRotations+=1
+
+            
+            wheel.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+
+            await sleep(2000);
+            if (rngType != "wheel"){return}
+
+            document.querySelector(".result").innerHTML = randomResult;
+            document.querySelector(".result").style.display = "block"
+
+          }
+
+        async function headortails(){
+
+        rngType = "hot"
+
+        let coin = document.querySelector(".animationDiv");
+
+        coin.style.transition = "0s"
+        coin.style.transform = "translate(-50%, -50%) rotateX(90)"
+
+        document.getElementById("birbpng").style.display = "none";
+
+        
+
+        for (let i = 0; i<5; i++){
+
+            if (rngType != "hot"){break}
+
+            eepytime = 0.05+i*0.03;
+            coin.style.transition = `${eepytime}s`;
+            coin.style.transform = `translate(-50%, -50%) rotateX(${360*(i+1)-180}deg)`;
+
+            coin.style.background = "#51d645";
+
+            document.getElementById("birbcoin").style.display = "block";
+            document.getElementById("brick").style.display = "none";
+            await sleep(eepytime*1000);
+            if (rngType != "hot"){break}
+            coin.style.transform = `translate(-50%, -50%) rotateX(${360*(i+1)}deg)`;
+
+            
+            coin.style.background = "#d65645"
+
+            document.getElementById("birbcoin").style.display = "none";
+            document.getElementById("brick").style.display = "block";
+            await sleep(eepytime*1000);
+    
+    
+        }
+        if (rngType != "hot"){return}
+
+        if (Math.random() >= 0.5){
+            eepytime = 0.05+5*0.03;
+            coin.style.transition = `${eepytime}s`;
+
+            coin.style.background = "#51d645";
+
+            document.getElementById("birbcoin").style.display = "block";
+            document.getElementById("brick").style.display = "none";
+            
+            if (rngType != "hot"){return}
+            coin.style.transform = `translate(-50%, -50%) rotateX(${360*4+ 180}deg)`; 
+
+            coin.style.background = "#d65645"
+
+            document.getElementById("birbcoin").style.display = "none";
+            document.getElementById("brick").style.display = "block";
+            await sleep(eepytime*1000);
+            if (rngType != "hot"){return}
+            coin.style.transform = `translate(-50%, -50%) rotateX(${360*4+ 360}deg)`; 
+
+        }else{
+            eepytime = 0.05+5*0.03;
+            coin.style.transition = `${eepytime}s`;
+
+            coin.style.background = "#51d645";
+
+            document.getElementById("birbcoin").style.display = "block";
+            document.getElementById("brick").style.display = "none";
+            
+            if (rngType != "hot"){return}
+            coin.style.transform = `translate(-50%, -50%) rotateX(${360*4+ 180}deg)`;  
+        }
+
+
+        }
+    </script>
+    </head>
+<body>
+
+    
+    
+
+    <div class="animationDiv">
+        <img id="birbpng" src="../birbpng.png">
+        <img id="brick" src="../brickEmoji.png">
+        <img id="birbcoin" src="../birbpng.png">
+    </div>
+
+    
+    <span class="result">
+        21
+    </span>
+    <div class="inputDiv">
+        <div class="subInputDiv">
+            <button id="toh" onclick="headortails()">Kopf / Zahl</button>
+        </div>  
+        <div class="subInputDiv">
+            <button id="generate" onclick="spin()">Generate</button>  <br>
+            <label for="min" >Min:</label>      
+            <input id="min" type="number" value=1> <br>
+            <label for="min">Max:</label>  
+            <input id="max" type="number" value=10>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

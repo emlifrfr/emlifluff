@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkles :3</title>
+
+    <style>
+        body{
+            background-color: black;
+            -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    pointer-events: none;
+        }
+        img{
+
+            filter: drop-shadow( 0px 0px 24px rgb(255, 255, 138));
+            animation: shine 3s ease-in-out 0 infinite;
+            
+        }
+
+        @keyframes shine {
+            0%{filter: drop-shadow( 0px 0px 17px rgb(255, 255, 138));}
+            50%{filter: drop-shadow(  0px 0px 29px rgb(255, 255, 138));}
+            100%{filter: drop-shadow( 0px 0px 17px rgb(255, 255, 138));}
+        }
+        .sparklediv {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+        }
+
+    </style>
+
+    <script>
+    function toDegrees (angle) {
+        return angle * (180 / Math.PI);
+        }
+    
+
+
+
+    
+    
+
+  function sparkle(x,y, startScale, endScale, angle, distance, time) {
+
+    async function move(element, x,y, startScale, endScale, angle, distance, time) {
+     
+        await new Promise(r => setTimeout(r, 5));
+        element.style.left = (x + (Math.sin(toDegrees(angle))*distance)) + "px";
+        element.style.top = (y + (Math.cos(toDegrees(angle))*distance)) + "px";
+        element.style.transform = `translate(-50%, -50%) scale(${endScale})`;
+        element.style.opacity = `0%`;
+        
+        await new Promise(r => setTimeout(r, time*1000));
+        element.remove();
+       
+    }
+
+        console.log("uwu");
+        
+
+        const imgElement = document.createElement("img");
+        imgElement.src = "https://static-00.iconduck.com/assets.00/sparkles-emoji-2048x1972-iqck4205.png";
+
+        imgElement.style.position = "absolute";
+        imgElement.style.transform = `translate(-50%, -50%) scale(${startScale})`;
+        imgElement.style.left = x + "px";
+        imgElement.style.top = y + "px";
+        imgElement.style.height = "50px"
+        imgElement.style.opacity = `100%`;
+        imgElement.style.transition = `${time}s`
+
+        document.querySelector(".sparklediv").appendChild(imgElement);
+
+        
+
+        
+
+        
+
+        move(imgElement, x,y, startScale, endScale, angle, distance, time);
+
+   }
+
+
+
+function rng(min,max){
+    return (Math.random() * (max-min) + min)
+}
+
+function create(){
+    w = window.innerWidth;
+    h = window.innerHeight;
+
+    sparkle(rng(50, w-50),rng(50, h-50), rng(0.8,1.5),  rng(0.3,0.70),  rng(0,359),  rng(10, 70),  rng(6,15));
+}
+window.onload = async function() {
+    console.log("owo");
+
+
+    for (let i = 0; i < 40; i++) {
+        create();}
+
+    while (true){
+        await new Promise(r => setTimeout(r, rng(100, 400)));
+        for (let i = 0; i < Math.floor(rng(1,6)); i++) {
+            create();}
+    }
+
+}; 
+
+
+var mousepressed = false;
+
+
+window.onmouseup = function(){
+
+mousepressed = false;
+}
+
+window.onmouseleave = function(){
+
+mousepressed = false;
+}
+
+var sparkleduration = 3
+
+
+window.onmousedown = function(event){
+    mousepressed = true;
+    for (let i = 0; i < Math.floor(rng(5,11)); i++) {
+    sparkle(event.clientX,event.clientY, rng(0.8,1.0),  rng(0.3,0.50),  rng(0,359),  rng(80, 160),  sparkleduration);}
+    
+}
+window.onmousemove = function(event){
+    if (mousepressed){
+    for (let i = 0; i < Math.floor(rng(0,9)); i++) {
+    sparkle(event.clientX,event.clientY, rng(0.8,1.0),  rng(0.3,0.50),  rng(0,359),  rng(80, 160),  sparkleduration);}}
+    
+}
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>:3</h1>
+    <div class="sparklediv">
+
+    </div>
+</body>
+</html>

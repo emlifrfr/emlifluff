@@ -1,0 +1,45 @@
+.content{
+    /* Positionierung des Inhaltes */
+    position: absolute;
+    transform: translateX(0);
+    margin-left: 7.5%;
+    top: 150px;
+    /* Schrift */
+    color: white;
+    font-size: 32px;
+    padding-bottom: 10vh;
+
+    z-index: -1; /* hinter dem dropdown */
+}
+h2{
+    /* Überschriften */
+    font-family: Teko;
+    font-size: 46px;
+}
+.heart{
+    background: rgb(90,255,246);
+    background: linear-gradient(309deg, rgba(90,255,246,1) 0%, rgba(255,107,225,1) 100%); 
+    mask-image: url("masks/heartmask.png");
+    mask-size: 94%;
+    mask-repeat: no-repeat;
+    mask-position: 50%;
+    transition: 0.2s;
+    height: 200px;
+    width: 200px;
+    margin: 15%;
+}
+
+.heart:hover{
+    
+    mask-size: 100%;
+}
+
+.nav:hover {
+    /* weil das nav auf dieser seite läner ist als gewöhnlich*/
+    padding-bottom: 6em !important; 
+}
+
+a {
+    /* Etwas passender die links in monster branding farbe*/
+    color: var(--monster-color);
+}

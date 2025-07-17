@@ -1,0 +1,69 @@
+div#home{
+    /* Überschrift Zentrieren und Positionieren!*/
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 13%; 
+}
+
+
+a {
+    /* Die Links */
+    text-align: center; /* Text Mittig */
+
+    /* Hintergrund */
+    background: rgb(27,27,27);
+    background: linear-gradient(309deg, rgba(27,27,27,0.4331933456976541) 0%, rgba(84,84,84,0.7749300403755253) 100%);
+
+    /* Position und Größe */
+    padding: 20px;
+    width: 300px;
+    height: 280px;
+    transform: translateX(-50%);
+
+    /* Fancy looks ✨✨✨*/
+    border-radius: 20px;
+    border: 2px #ffffff42 solid;
+    transition: 0.2s;
+}
+
+a::before{
+    content: url('catbirbe.png'); /*✨✨ Catbirb!! ✨✨✨✨✨*/
+    opacity: 0;
+    position: absolute;
+    right: 10px;
+    top: -84px;
+    transition: 0.2s;
+    transform: rotateX(90deg);
+}
+a:hover::before{
+    opacity: 1;
+    transform: rotateX(00deg); /* Hello there */
+}
+a:hover{
+    /* bisschen hover effekte */
+    border: 2px #ffffff7c solid;
+    box-shadow: 0px 0px 40px 10px #ffffff1c;
+}
+        
+a, div#home{
+
+    /* Schrift und geerelle sachen */
+    position: absolute;
+    color: white;
+    font-family: Teko;
+    font-size: 30px;
+}
+
+/* Position der links */
+#tierlist{
+    left: 80%;
+    top: calc(25% + 100px);
+}
+#collection{
+    left: 20%;
+    top: calc(25% + 100px);
+}
+#info{
+    left: 50%;
+    top: calc(25% + 100px);
+}

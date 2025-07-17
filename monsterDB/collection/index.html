@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammlung</title>
+
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://00gdps.ovh/monsterDB/globalstyles.css">
+
+
+    <script>
+        // wenn man auf eine dose klickt wird deren unterseite aufgerufen
+        function openCan(openCanName){
+            window.location.href = `https://00gdps.ovh/monsterDB/collection/can/?can=${openCanName}`;
+        }
+        async function compileCollection(data){
+
+            // compile the can data
+            const response = await fetch("https://00gdps.ovh/monsterDB/collection/canData.json");
+            const canData = await response.json();
+            
+                       
+
+            // vier reihen
+            for (let i = 0; i < 4; i++) {
+                // für jede Dose in der Reihe
+                for (can in data[i]) {
+                    
+                    
+                    let thisCan= canData["cans"][data[i][can]]; // Daten dieser Dose
+                    
+                    let seriesName = canData["series"][thisCan.series];  // Seriennamen herausfinden aus den Dosen Daten
+
+                    // dose ins Regal hinzufügen
+                    document.querySelector(`.shelfGrid > div:nth-child(${i+1})`).innerHTML += `<img title="${seriesName} ${thisCan.name}" src="${thisCan.image}" onClick="openCan('${data[i][can]}')" role="button">`
+            }  
+            }  
+
+        }
+
+        // Bestückung des Regals abrufen und die Reihen befüllen
+        fetch(
+            "https://00gdps.ovh/monsterDB/collection/collection.json"
+            ).then(response=>response.json())
+            .then(data=>{ compileCollection(data["rows"])})
+        
+
+        
+            
+    </script>
+    <script>
+        // Regal wird verdunkelt wenn man das dropdownmenü öffnet
+
+        function navHoverEnter(){
+            document.querySelector(".shelfGrid").style.opacity = "0.5";
+        }
+        function navHoverExit(){
+            document.querySelector(".shelfGrid").style.opacity = "1";
+        }
+
+        // das wars :3
+    </script>
+</head>
+<body>
+    <!-- Überschrift und bisschen Navigation, was man halt so braucht -->
+    <div class="headerDiv">
+        <a href="../" title="Home">
+            <svg id="homeicon" id="Layer_1" version="1.1" viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z"/></svg>
+        </a>
+        <div class="nav" onmouseover="navHoverEnter()" onmouseout="navHoverExit()">
+            <h1 id="arrow">›</h1>
+            <h1>Sammlung</h1>
+            <div class="navDropdown">
+                <a href="../tierlist"><h1 id="arrow">›</h1><h1>Tierlist</h1></a>
+            </div>
+        </div>
+    </div>
+
+    <!--✨✨✨ Das Regal (aber noch leer) ✨✨✨-->
+    <div class="shelfGrid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

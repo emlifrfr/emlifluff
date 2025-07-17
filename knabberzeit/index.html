@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knabberzeit</title>
+    <style>
+        @font-face {
+            font-family: "Roboto";
+            src: url("Roboto-Medium.ttf") format("truetype");
+        }
+        body{
+            background: rgb(0,0,0); 
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgb(6, 6, 6) 100%);
+        }
+        .contentGrid{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            display: grid;
+            grid-template-rows: min-content auto;
+            grid-template-columns: repeat(6, min-content);
+            height: 1em;
+           
+            font-size: 21vw;
+            font-family: "Roboto";
+            color: #c4c4c4;
+        }
+        .contentGrid > div{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            height: 100%;
+        }
+        .contentGrid > div > span:not(.colon){
+            width: 23.5vw;
+            text-align: right;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent;
+        }
+        .contentGrid > div:nth-child(1) > span{
+            background: rgb(0,255,190);
+            background: linear-gradient(58deg, rgba(0,255,190,1) 0%, rgba(4,255,22,1) 100%); 
+            float: right;
+        }
+        .contentGrid > div:nth-child(3) > span{
+            background: rgb(255,0,0);
+            background: linear-gradient(356deg, rgba(255,0,0,1) 0%, rgba(255,231,146,1) 100%);  
+        }
+        .contentGrid > div:nth-child(5) > span{
+            background: rgb(255,224,0);
+            background: linear-gradient(356deg, rgba(255,224,0,1) 0%, rgba(255,146,244,1) 100%); 
+        }
+        .smallText{
+            font-size: 3vw;
+            text-align: center;
+        }
+        .gbimg{
+            height: 83%;
+            margin: auto;
+            transform: translateY(3%);
+            background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/27/Gummi_Bears_in_Action_07.png");
+        }
+        .contentGrid > div > span{
+            line-height: 1;
+            float: right;
+        }
+    </style>
+    <script>
+        var timezone = 2;
+
+        function update(){
+
+            
+            let now = (Math.floor(Date.now() / 1000))+(60*60*timezone);
+            
+            let ed = Math.floor(now / ((8*60*60*3)));
+            now -= ed*8*60*60*3
+            let bs = Math.floor((now) / (60*60*3));
+            now -= bs*60*60*3
+            let ue = Math.floor((now) / (60*3));
+            now -= ue*60*3
+            let gb = Math.floor((now) / 3);
+            now -= gb*3
+            let sec = Math.floor((now));
+            
+            console.log(bs);
+            console.log(ue);
+            console.log(gb);
+            
+            document.querySelector("#bs").innerHTML = String(bs+100).slice(-2);
+            document.querySelector("#ue").innerHTML = String(ue+100).slice(-2);
+            document.querySelector("#gb").innerHTML = String(gb+100).slice(-2);
+            
+        }
+
+        function init(){
+    
+            update();
+
+            let loaded = Math.floor(Date.now() / 1000);
+
+            while(Math.floor(Date.now() / 1000) == loaded) {}
+
+            var updateloop = setInterval(update,1000);
+        }
+
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <div class="contentGrid">
+        <div>
+            <span id="bs">B</span>
+        </div>
+        <div><span class="colon">:</span></div>
+        <div>
+            <span id="ue">ÜE</span>
+        </div>
+        <div><span class="colon">:</span></div>
+        <div>
+            <span id="gb">GB</span>
+        </div>
+        <div class="gbimg">
+            
+        </div>
+
+        <span class="smallText">Brennstäbe</span>
+        <span class="smallText">-</span>
+        <span class="smallText">Überraschungseier</span>
+        <span class="smallText">-</span>
+        <span class="smallText">Gummibärchen</span>
+    </div>
+</body>
+</html>

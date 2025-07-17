@@ -1,0 +1,45 @@
+.tierlistGrid{
+    width: 85%;
+    height: 139%;
+    position: absolute;
+    transform: translate(-50%, -40vh);
+    top: 60%;
+    left: 50%;
+    /* GRID 🤯🤯🤯 */
+    display: grid;
+    grid-template-rows: repeat(8, calc(100% / 8));
+    grid-template-columns: 160px auto;
+    padding-bottom: 187px;
+    transition: 0.2s;
+}
+.tierName{
+    font-family: "Teko";
+    color: black;
+    font-weight: 600;
+    font-size: 70px;
+
+    /* Zentrieren */
+    line-height: calc(139vh / 8);
+    text-align: center;
+    
+}
+.tierItemDiv > img {
+    /* größe und position stuff */
+    height: 90%;
+    width: calc(139vh / 8 / 2);
+    object-fit: contain;
+    margin: auto 0;
+    transition: 0.1s;
+    cursor: pointer; /* Pointer cursor damit man eher auf die idee kommt zu klicken */
+}
+.tierItemDiv{
+    display: flex;
+}
+.tierlistGrid > div {
+    border: 1px white solid;
+    background: #0d0d0d;
+}
+.tierItemDiv > img:hover {
+    /* hoverrrrr */
+    height: 98%;
+}

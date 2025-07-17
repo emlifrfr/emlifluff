@@ -1,0 +1,45 @@
+
+.shelfGrid{
+    /* 4 Zeilen, 1 Spalte Grid -> vier reihen von dosen*/
+    display: grid;
+    grid-template-rows: repeat(4, 25%); 
+    grid-template-columns: 100%; 
+    
+    /* größenverhältnis 72:30, abhängig von Bildschimgröße*/
+    height: 30vw;       
+    width: 72vw;  
+    
+    /* zentriert 🤯*/
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    top: 60%;                         
+    left: 50%;                        
+    
+    z-index: -1; /* hinter dem nav-dropdown */
+    transition: opacity 0.2s; /* für den hover effekt des nav elements */
+}
+.shelfGrid > div{
+    height: 100%;       /* container selbst sind nur so groß wie ihre zeilen */
+    overflow: visible;  /* die dosen können aber über den rand ihrer grid zeilen angezeigt werden*/
+
+    transform: translateY(-100%); /*schwarze css magie damit der hover effekt richtig funktioniert*/
+    width: fit-content; 
+}
+.shelfGrid > div > img{
+    width: calc(72vw / 11.5); /* in jede zeile sollen 11,5 dosen passen */
+    transition: 0.1s;
+    cursor: pointer; /* Pointer cursor damit man eher auf die idee kommt zu klicken */
+}
+.shelfGrid > div:nth-child(2) > img, .shelfGrid > div:nth-child(4) > img, .shelfGrid > div:nth-child(2), .shelfGrid > div:nth-child(4){
+    margin-left: auto; /* zweite und vierte zeile wird so nach rechts gebunden */
+}
+.shelfGrid > div > img:hover{
+    scale: 1.05; /* dosen werden bei berührung etwas größer */
+    transform: translateY(-2.5%); /*hover effekt very cool 👍*/
+
+}
+.shelfGrid > div:nth-child(2){
+    transform: translateY(-100%) translateY(-29px); /* die zweite reihe hat eine dose die 29 pixel zu groß ist also wird die ganze reihe verschoben */
+}
+
+

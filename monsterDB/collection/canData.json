@@ -1,0 +1,345 @@
+{
+    "series":[
+        "Monster","Ultra","Reserve","Rehab","Nitro","Juiced","Super Fuel"
+    ],
+    "info":[
+        "Verfügbar","Eingestellt","Seltsam"
+    ],
+    "infocolor":[
+        "#3df23a","#f2493a","#f28d3a"
+    ],
+    "tiernames":[
+        "S","A","B","C","D","E","F","NA"
+    ],
+    "tiercolors":[
+        "#eb3486","#eb3434","#eb6e34","#ebcc34","#8ceb34","#34eb74","#3492eb","#a3a3a3"
+    ],
+    "cans":{
+        "oldAssault":{
+            "name":"Assault",
+            "series":0,
+            "image":"/monsterDB/collection/assets/assaultOld.png",
+            "description":"Besser als das neue Monster Assault, nur noch hier und da erhältlich, wurde leider ersetzt und eingestellt.",
+            "taste":"Cola + Monster",
+            "rating":3,
+            "info":1
+        },
+        "reserveWatermelon":{
+            "name":"Watermelon",
+            "series":2,
+            "image":"https://web-assests.monsterenergy.com/mnst/bb13f601-93a0-4be0-a825-3d83dc07c373.webp",
+            "description":"",
+            "taste":"Wassermelone 🍉",
+            "rating":7,
+            "info":0
+        },
+        "newAssault":{
+            "name":"Assault",
+            "series":0,
+            "image":"https://web-assests.monsterenergy.com/mnst/64f50b9a-8fac-4048-a28e-188d54613018.webp",
+            "description":"Die alte Variante von Monster Assault war geschmacklich besser, wurde aber trotz Gegenreaktion aus der Community ersetzt.",
+            "taste":"Cola + Monster",
+            "rating":4,
+            "info":0
+        },
+        "rehabPeachOld":{
+            "name":"Peach Iced Tea",
+            "series":3,
+            "image":"/monsterDB/collection/assets/rehabPeachTea.png",
+            "description":"Wurde im Design ersetzt aber geschmacklich bei der neuen Variante kein deutlicher Unterschied. Die anderen Sorten der Reihe wurden anscheinend auch eingestellt aber noch nicht ersetzt.",
+            "taste":"Eistee Pfirsich 🍑",
+            "rating":3,
+            "info":1
+        },
+        "reserveOrange":{
+            "name":"Orange Dreamsicle",
+            "series":2,
+            "image":"https://web-assests.monsterenergy.com/mnst/3834b80a-1102-4a88-b7bf-3ab6afd6054e.webp",
+            "description":"",
+            "taste":"Orangensorbet",
+            "rating":0,
+            "info":0
+        },
+        "rehabPeachNew":{
+            "name":"Peach Iced Tea",
+            "series":3,
+            "image":"/monsterDB/collection/assets/rehabPeachNew.png",
+            "description":"Ersetzt das alte Peach Rehab aber hat geschmacklich keinen unterschied. Bis jetzt die einzige neue Variante aus der Rehab Reihe.",
+            "taste":"Eistee Pfirsich 🍑",
+            "rating":3,
+            "info":0
+        },
+        "rehabLemonTeaOld":{
+            "name":"Lemon Iced Tea",
+            "series":3,
+            "image":"/monsterDB/collection/assets/rehabLemonTea.png",
+            "description":"Im gegensatz zu Rehab Peach noch keine neue Variante.",
+            "taste":"Eistee Zitrone 🍋",
+            "rating":3,
+            "info":1
+        },
+        "nitroPeach":{
+            "name":"Cosmic Peach",
+            "series":4,
+            "image":"https://web-assests.monsterenergy.com/mnst/ed5579bd-8ab7-479e-b926-6838c5ec353b.webp",
+            "description":"So wie alle Sorten der Nitro Reihe ist diese mit Distickstoffoxid aka Lachgas angereichert und schmeckt besonders Schlecht, laut Monster Energy selbst 'ähnlich feinem Champanger'.",
+            "taste":"Pfirsich mit leichter und trockener Textur ✨",
+            "rating":6,
+            "info":0
+        },
+        "thedoctor":{
+            "name":"VR46 the doctor",
+            "series":0,
+            "image":"https://web-assests.monsterenergy.com/mnst/f030980e-73ed-4c1e-8058-7eca33f7a50c.webp",
+            "description":"Kollabo mit MotoGP Champion Valentino Rossi aka The Doctor",
+            "taste":"Zitrusfrüchte",
+            "rating":4,
+            "info":0
+        },
+        "reservePineapple":{
+            "name":"White Pineapple",
+            "series":2,
+            "image":"https://web-assests.monsterenergy.com/mnst/4c12b6e6-c33e-45df-aa10-3e3e3e815b35.webp",
+            "description":"",
+            "taste":"Zuckerhut-Ananas",
+            "rating":1,
+            "info":0
+        },
+        "lewishamilton":{
+            "name":"Lewis Hamilton",
+            "series":0,
+            "image":"https://web-assests.monsterenergy.com/mnst/e0b3d3a1-7653-40cc-a20f-b7b6904b4de5.webp",
+            "description":"Laut Monster Energy wurde diese Sorte von Formel-1-Weltmeister Lewis Hamilton selbst entwickelt! Wowie",
+            "taste":"Pfirsich-Nektarine",
+            "rating":2,
+            "info":0
+        },
+        "oldBlue":{
+            "name":"Zero Sugar",
+            "series":0,
+            "image":"/monsterDB/collection/assets/oldBlue.png",
+            "description":"Wird zurzeit in Deutschland als Absolutely Zero verkauft aber ist eigntlich das selbe, ist allerdings trotzdem noch auf allen Webseiten das benutzte Design. Warum? Idfk",
+            "taste":"Süß und Salzig mit Zitrone",
+            "rating":2,
+            "info":2
+        },
+        "absoluteZero":{
+            "name":"Absolutely Zero",
+            "series":0,
+            "image":"/monsterDB/collection/assets/newBlue.png",
+            "description":"Aktuelles Design des blauen Zero Sugar Monsters, keiner weiß warum.",
+            "taste":"Süß und Salzig mit Zitrone",
+            "rating":2,
+            "info":2
+        },
+        "zeroSugar":{
+            "name":"Zero Sugar",
+            "series":0,
+            "image":"https://web-assests.monsterenergy.com/mnst/1f3f1d80-2eec-40db-b221-333b24202c8d.webp",
+            "description":"Monster Zero Sugar aber in noch besser und irgendwie cremiger. Schmeckt echt gut.",
+            "taste":"Süß und Salzig",
+            "rating":1,
+            "info":0
+        },
+        "og":{
+            "name":"Original Green",
+            "series":0,
+            "image":"https://web-assests.monsterenergy.com/mnst/52176d49-aa10-4aca-93e5-1ebc87ca666b.webp",
+            "description":"OG Monster!",
+            "taste":"Süß und Salzig - Original Monster Taste",
+            "rating":1,
+            "info":0
+        },
+        "mega":{
+            "name":"Mega Original",
+            "series":0,
+            "image":"https://dosenmatrosen.imgbolt.de/media/ff/9e/33/1650024893/GL006789-1-1-Mega-Monster-Energy.png",
+            "description":"Mit wiederverschließbarer Öffnung. Der Preis ist viel höher für das wenig Extra aber den Verschluss ist es warscheinlich wert.",
+            "taste":"Süß und Salzig - Original Monster Taste",
+            "rating":1,
+            "info":0
+        },
+        "nitroSuperDry":{
+            "name":"Super Dry",
+            "series":4,
+            "image":"https://web-assests.monsterenergy.com/mnst/001726a7-870c-4046-977f-40b93f0fb73e.webp",
+            "description":"So wie alle Sorten der Nitro Reihe ist diese mit Distickstoffoxid aka Lachgas angereichert und schmeckt ganz besonders Schlecht.. sehr Enttäuscht.",
+            "taste":"Erfrischende Zitrone",
+            "rating":6,
+            "info":0
+        },
+        "pacificPunch":{
+            "name":"Pacific Punch",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/8855ccc3-f244-4bdb-9511-4a34bb803d5e.webp",
+            "description":"Himbeere, Guave und Kirsche - inspiriert von der ikonischen Tattoo-Tradition der 1960er Jahre (anscheinend)",
+            "taste":"Frucht-Punsch",
+            "rating":5,
+            "info":0
+        },
+        "pipelinePunch":{
+            "name":"Pipeline Punch",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/330886ac-92a4-4cc6-a690-001506082e7b.webp",
+            "description":"Femboy Monster :3",
+            "taste":"Maracuja, Orange und Guava",
+            "rating":1,
+            "info":0
+        },
+        "aussieLemonade":{
+            "name":"Aussie Lemonade",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/9cf0c298-4e40-4f6d-9171-56f4a4434815.webp",
+            "description":"",
+            "taste":"",
+            "rating":4,
+            "info":0
+        },
+        "mangoLoco":{
+            "name":"Mango Loco",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/67cb71ab-3cc8-468a-a3e2-79c02a4b8360.webp",
+            "description":"Das beste Juiced!",
+            "taste":"Mango 🥭",
+            "rating":0,
+            "info":0
+        },
+        "khaotic":{
+            "name":"Khaotic",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/226a5dde-6312-4d4c-95c4-d1628d3becee.webp",
+            "description":"Schon vergessen",
+            "taste":"Orangene Zitrusfrüchte",
+            "rating":7,
+            "info":0
+        },
+        "monarch":{
+            "name":"Monarch",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/2a415d8c-9d0b-485b-8d66-d7a212c4fd5f.webp",
+            "description":"Absolut overhyped, langweilig",
+            "taste":"Pfirsich und Nektarine",
+            "rating":3,
+            "info":0
+        },
+        "mixxd":{
+            "name":"Mixxd Punch",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/b26a540b-51a7-4ec5-b2c3-745ff9754fd7.webp",
+            "description":"In warheit besteht der 'Tropische Punsch' zu 100% aus Zucker :>",
+            "taste":"Tropischer Punsch",
+            "rating":5,
+            "info":0
+        },
+        "ultraWhite":{
+            "name":"White",
+            "series":1,
+            "image":"https://web-assests.monsterenergy.com/mnst/04170ebf-abdc-4ff8-8858-0e17fcb28e75.webp",
+            "description":"Das erste und ikonischste Ultra, könnte zu Zweifeln an der eigenen Geschlechtsidentität führen.",
+            "taste":"Leichter & erfrischender Zitrusgeschmack",
+            "rating":0,
+            "info":0
+        },
+        "ultraRosa":{
+            "name":"Rosá",
+            "series":1,
+            "image":"https://web-assests.monsterenergy.com/mnst/7ee071e5-fcaf-4cf2-b6c6-9b88b534b9c4.webp",
+            "description":"Was auch immer dieser Geschmack ist",
+            "taste":"Leicht, süß und blumig",
+            "rating":2,
+            "info":0
+        },
+        "ultraPeachyKeen":{
+            "name":"Peachy Keen",
+            "series":1,
+            "image":"https://web-assests.monsterenergy.com/mnst/381daef9-bb3d-4223-adde-4b37280ba883.webp",
+            "description":"Schmeckt wie Eistee Pfirsich aber etwas leichter",
+            "taste":"Erfrischender Pfirsich",
+            "rating":1,
+            "info":0
+        },
+        "ultraWatermelon":{
+            "name":"Watermelon",
+            "series":1,
+            "image":"https://web-assests.monsterenergy.com/mnst/3ac493af-00f0-40a1-82d4-8483987d1a55.webp",
+            "description":"Langweilig und viel zu süß",
+            "taste":"Erfrischende Wassermelone",
+            "rating":4,
+            "info":0
+        },
+        "ultraGolden":{
+            "name":"Golden Pineapple",
+            "series":1,
+            "image":"/monsterDB/collection/assets/golden.png",
+            "description":"Ein sehr schönes Design, inspiriert vom Goldschatz Eldorado oder so",
+            "taste":"Goldene Ananas",
+            "rating":1,
+            "info":0
+        },
+        "ultraParadise":{
+            "name":"Paradise",
+            "series":1,
+            "image":"https://web-assests.monsterenergy.com/mnst/65134254-0216-486e-b1bc-c66f0c5f86da.webp",
+            "description":"Sehr interessanter Geschmack",
+            "taste":"Kiwi-Limette mit einem Hauch von Gurke",
+            "rating":1,
+            "info":0
+        },
+        "ultraFiesta":{
+            "name":"Fiesta",
+            "series":1,
+            "image":"https://web-assests.monsterenergy.com/mnst/d4ce31da-5bd2-4f65-8064-e6c77fc9caac.webp",
+            "description":"Enttäuschend",
+            "taste":"Frische Mango",
+            "rating":4,
+            "info":0
+        },
+        "mule":{
+            "name":"Mule",
+            "series":1,
+            "image":"/monsterDB/collection/assets/mule.png",
+            "description":"Überhaupt nicht süß und ein sehr interessanter Geschmack.",
+            "taste":"Ingwer",
+            "rating":1,
+            "info":1
+        },
+        "badapple":{
+            "name":"Bad Apple",
+            "series":5,
+            "image":"https://web-assests.monsterenergy.com/mnst/53fae157-84da-451c-8b2a-c45a82f2e0e7.webp",
+            "description":"Sehr erfrischend, nicht so süß und Schmeckt tatsächlich nach Apfel 🤯🤯🤯! Ist die neueste Monster Sorte die auch in Deutschland verfügbar ist.",
+            "taste":"Apfel-Birnen Schorle",
+            "rating":1,
+            "info":1
+        },
+        "superFuelBlueIce":{
+            "name":"Blue Ice",
+            "series":6,
+            "image":"/monsterDB/collection/assets/blueice.png",
+            "description":"Aus Rom geschmuggelt",
+            "taste":"Blaue Himbere (wth)",
+            "rating":4,
+            "info":2
+        },
+        "superFuelWatermelon":{
+            "name":"Watermelon",
+            "series":6,
+            "image":"/monsterDB/collection/assets/superfuelwatermelon.png",
+            "description":"Aus Rom geschmuggelt",
+            "taste":"Wassermelone 🍉",
+            "rating":5,
+            "info":2
+        },
+        "ripper":{
+            "name":"Ripper",
+            "series":5,
+            "image":"/monsterDB/collection/assets/ripper.png",
+            "description":"Aus Rom geschmuggelt",
+            "taste":"Fruchtigen Aromen und ein Hauch von Zitrusfrüchten",
+            "rating":5,
+            "info":2
+        }
+        
+    }
+    
+}

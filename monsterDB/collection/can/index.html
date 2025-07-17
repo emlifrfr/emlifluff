@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can</title>
+    
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://00gdps.ovh/monsterDB/globalstyles.css">
+
+    <script>
+        // Angeforderte dose aus der URL entnehmen
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const displayCan = urlParams.get('can')
+        
+
+        
+
+        
+
+        async function singleDisplayCan(canName){
+            let response = await fetch("https://00gdps.ovh/monsterDB/collection/canData.json");
+            let canData = await response.json();
+
+            seriesNames = canData["series"];
+
+            name = canData["cans"][canName]["name"];
+
+            series = canData["series"][canData["cans"][canName]["series"]];
+
+            info = canData["info"][canData["cans"][canName]["info"]];
+            infoColor = canData["infocolor"][canData["cans"][canName]["info"]];
+
+            rating = canData["tiernames"][canData["cans"][canName]["rating"]];
+            ratingColor = canData["tiercolors"][canData["cans"][canName]["rating"]];
+
+            image = canData["cans"][canName]["image"];
+
+            taste = canData["cans"][canName]["taste"];
+            
+            description = canData["cans"][canName]["description"];
+
+
+            document.title = `${series} ${name}`
+
+            document.body.innerHTML = `
+                <div class="displayCanDiv">
+                    <div class="canimg" style="background: url(${image}); background-size: cover;">
+                    <img src="${image}">
+                    </div>
+                    <div class="displayContent">
+                        <div class="titleSection">
+                            <span id="series">${series}</span>
+                            <span id="name">${name}</span>
+                        </div>
+                        <div class="infoSection">
+                            <ul>
+                                <li><span>Status: <span id="status" style="color: ${infoColor}">${info}</span></span></li>
+                                <li><span>Geschmack: <span id="taste">${taste}</span></li>
+                                <li><span>Rating: <span id="status" style="color: ${ratingColor}">${rating}</span></span></li>
+                            </ul>
+                        </div>
+                        <span id="desc">${description}</span>
+                    </div>
+                </div>`
+
+        }
+        async function doesCanExist(canName){
+            response = await fetch("https://00gdps.ovh/monsterDB/collection/canData.json");
+            canData = await response.json();
+            console.log(!(canData["cans"][canName] == undefined));
+            return !(canData["cans"][canName] == undefined);
+        }
+
+        doesCanExist(displayCan).then((singleCanDisplay) => {
+            if (singleCanDisplay){
+                singleDisplayCan(displayCan)
+                
+                
+
+        }else{
+            document.body.innerHTML = `
+                <div class="displayCanDiv">
+                    
+                    <div class="displayContent">
+                        <div class="titleSection">
+                            <span id="series">Error</span>
+                            <span id="name">404</span>
+                        </div>
+                        <div class="infoSection">
+                            <ul>
+                                <li><span>Couldnt find can <span id="status" style="color: #f2493a">${displayCan}</span></span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>`
+        }})
+
+        
+             
+
+    </script>
+</head>
+<body>
+    <div class="displayCanDiv">
+        
+        <div class="displayContent">
+            <div class="titleSection">
+                <span id="series">Loading</span>
+                <span id="name">...</span>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+</html>

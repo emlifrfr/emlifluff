@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierlist</title>
+
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://00gdps.ovh/monsterDB/globalstyles.css">
+
+    <script>
+        function openCan(openCanName){ // Aktion wenn auf eine Dose geklickt wird
+            window.location.href = `https://00gdps.ovh/monsterDB/collection/can/?can=${openCanName}`;
+        }
+
+        function compileList(data){
+
+            const gridContainer = document.querySelector(".tierlistGrid")
+            for (let i = 0; i < 8; i++) { // Die Linke Spalte mit den Namen der 8 Tiers füllen und die rechte Spalte mit divs.
+                tierName = data["tiernames"][i]
+                tierColor = data["tiercolors"][i]
+
+                gridContainer.innerHTML += `
+                <div class="tierName" style="background-color: ${tierColor};">${tierName}</div>
+                <div class="tierItemDiv"></div>`
+            }
+
+            for (can in data["cans"]) { // Divs mit Dosen füllen
+
+                canIdName = can;
+                can = data["cans"][can];
+
+                tier = (can["rating"] + 1) * 2; // Wo die dose hin muss, Zahl ist wichtig für den :nth-child() Selektor.
+
+                let seriesName = data["series"][can.series];
+
+                tierDiv = document.querySelector(`.tierlistGrid > .tierItemDiv:nth-child(${tier})`);
+
+                tierDiv.innerHTML += `<img title="${seriesName} ${can.name}" src="${can.image}" onClick="openCan('${canIdName}')" role="button">`;
+
+            }
+        }
+
+        fetch(
+            "https://00gdps.ovh/monsterDB/collection/canData.json" // Daten holen, dabb Liste basteln
+            ).then(response=>response.json())
+            .then(data=>{ compileList(data)})
+
+    </script>
+    <script>
+        // Liste wird verdunkelt wenn man das dropdownmenü öffnet
+
+        function navHoverEnter(){
+            document.querySelector(".tierlistGrid").style.opacity = "0.5";
+        }
+        function navHoverExit(){
+            document.querySelector(".tierlistGrid").style.opacity = "1";
+        }
+
+        // das wars :3
+    </script>
+</head>
+<body>
+    <!-- Überschrift und bisschen Navigation, was man halt so braucht -->
+    <div class="headerDiv">
+        <a href="../" title="Home">
+            <svg id="homeicon" id="Layer_1" version="1.1" viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z"/></svg>
+        </a>
+        <div class="nav" onmouseover="navHoverEnter()" onmouseout="navHoverExit()">
+            <h1 id="arrow">›</h1>
+            <h1>Tierlist</h1>
+            <div class="navDropdown">
+                <a href="../collection"><h1 id="arrow">›</h1><h1>Sammlung</h1></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="tierlistGrid">
+        
+    </div>
+</body>
+</html>

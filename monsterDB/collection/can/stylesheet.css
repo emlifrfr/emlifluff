@@ -1,0 +1,87 @@
+@keyframes glow {
+    0%{filter: blur(5px);}
+    50%{filter: blur(15px);}
+    100%{filter: blur(5px);}
+}
+.displayCanDiv{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background: rgb(52,52,52);
+    background: radial-gradient(circle, rgba(52,52,52,1) 0%, rgba(29,29,29,1) 100%);
+    
+    width: 70%;
+    height: 30vw;
+    display: flex;
+    
+}
+.canimg > img{
+    height: 100%;
+}
+.canimg{
+    scale: 110%;
+    transform: translateX(-10%);
+    background: url(/monsterDB/collection/assets/rehabPeachTea.png);
+    background-size: auto;
+    background-size: cover;
+    height: fit-content;
+    scale: 110%;
+    height: 100%;
+}
+.canimg:before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: inherit;
+    filter: blur(5px);
+    transform: translate3d(0px,0px,-1px);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+    animation: glow 10s infinite;
+}
+.titleSection{
+    color: white;
+    font-family: "Teko", sans-serif;
+    margin: 3%;
+    font-size: 63px;
+}
+.infoSection{
+    color: white;
+    font-family: sans-serif;
+    margin: 3%;
+    font-size: 20px;
+}
+.infoSection > ul{
+    list-style-type: none;
+    display: inline-block;
+}
+.infoSection > ul >li::before{
+    content: "›";
+    color: var(--monster-color);
+    padding: 0px 5px;
+    
+}
+.infoSection > ul >li{
+    background-color: rgb(14,14,14);
+    margin: 5px 0px;
+    padding: 5px 10px;
+    width: fit-content;
+}
+.titleSection > span:nth-child(2){
+    
+    font-size: 77px;
+}
+#name{
+    font-weight: bolder;
+}
+.displayContent{
+    width: 100%;
+}
+#desc{
+    margin-left: 3%;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+}

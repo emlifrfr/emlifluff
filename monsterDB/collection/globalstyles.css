@@ -1,0 +1,88 @@
+body{
+    background: rgb(0,0,0);  /* compatibility und so */
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(19,19,19,1) 100%); /* Schwarzer, runder Farbverlauf, etwas heller am Rand. */
+    --monster-color: #6bd41a; /* Monster Grün */
+}
+@font-face {
+    font-family: "Teko";
+    src: url('https://00gdps.ovh/monsterDB/Teko.ttf');
+    font-family: sans-serif;
+}
+
+
+/* Everything header/nav related*/
+
+.headerDiv{
+    display: inline-flex;
+    color: white;
+    font-family: Teko;
+    font-size: 30px;
+    transform: translateX(0); /* ich bin mir nicht ganz sicher warum aber wenn ich es entferne ändert sich die position vom dropdown */
+    margin-left: 7.5%; /* am linken rand des dosen regals + 50px */
+    margin-top: 10px; /* bisschen margin, was man so macht nh */
+}
+.nav h1{
+    margin-top: 0;
+    margin-bottom: 0; /* wer braucht schon margins */
+    transition: 0.2s; 
+}
+#homeicon {
+    /* farbwechsel bei hover */
+    fill: white;
+    transition: fill 0.2s;
+
+    /* größe position und alles */
+    width: 50px;
+    padding-top: 9px;
+    margin-right: 15px; 
+    
+}
+#homeicon:hover{
+    fill: var(--monster-color); /* farbwechsel bei hover */
+}
+.nav > #arrow{
+    margin-right: 10px;
+    transition: 0.2s;
+}
+.nav:hover > #arrow{
+    transform: rotate(90deg); /* pfeil dreht sich nach unten bei hover */
+    
+}
+.nav {
+    display: flex;
+}
+.nav:hover > h1{
+    color: var(--monster-color); /* farbwechsel bei hover */
+}
+.nav:hover .navDropdown{
+    display: block; /* anzeigen bei dropdown hover */
+}
+.navDropdown{
+    position: absolute;
+    display: none; /* normalerweise nicht anzeigen */
+
+    /* position und alles */
+    top: 2em;
+    line-height: 2em;
+    padding-top: 0.5em;
+    z-index: 1;
+    
+}
+.navDropdown > a{
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+.navDropdown > a > #arrow{
+    padding-right: 10px;
+    opacity: 0;
+    
+}
+.navDropdown > a:hover > #arrow{
+    opacity: 1; /* anzeigen wenn menupunkt berührt wird */
+}
+.nav:hover {
+    /* bisschen größer damit das menü nicht direkt verschwindet, wenn man mit der maus verrutscht oder der menüpunk sehr kurz ist*/
+    padding-bottom: 3em; 
+}
+
