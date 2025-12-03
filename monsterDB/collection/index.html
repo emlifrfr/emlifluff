@@ -6,13 +6,13 @@
     <title>Sammlung</title>
 
     <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="/monsterDB/globalstyles.css">
+    <link rel="stylesheet" href="../globalstyles.css">
 
 
     <script>
         // wenn man auf eine dose klickt wird deren unterseite aufgerufen
         function openCan(openCanName){
-            window.location.href = `/monsterDB/collection/can/?can=${openCanName}`;
+            window.location.href = `/can/?can=${openCanName}`;
         }
         async function compileCollection(data){
 
@@ -41,7 +41,7 @@
 
         // Bestückung des Regals abrufen und die Reihen befüllen
         fetch(
-            "/monsterDB/collection/collection.json"
+            "collection.json"
             ).then(response=>response.json())
             .then(data=>{ compileCollection(data["rows"])})
         
